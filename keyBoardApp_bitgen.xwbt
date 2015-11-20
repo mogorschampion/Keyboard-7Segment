@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/vkdijd000u/Documents/master/ee566/lab/Keyboard-7Segment/keyBoardApp.ncd
+OUTFILE=/home/vkdijd000u/Documents/master/ee566/lab/Keyboard-7Segment/keyBoardApp.bit
+FAMILY=Spartan3E
+PART=xc3s100e-4cp132
+WORKINGDIR=/home/vkdijd000u/Documents/master/ee566/lab/Keyboard-7Segment
+LICENSE=WebPack
+USER_INFO=211112075_0_0_515

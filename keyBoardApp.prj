@@ -1,0 +1,5 @@
+verilog work "key2Binary.v"
+verilog work "SevenSegFourDigwithEnable.v"
+verilog work "ps2_rx.v"
+verilog work "keyBoardCore.v"
+verilog work "keyBoardApp.v"

@@ -1,0 +1,570 @@
+Release 14.1 - xst P.15xf (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Reading design: keyBoardApp.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "keyBoardApp.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "keyBoardApp"
+Output Format                      : NGC
+Target Device                      : xc3s100e-4-cp132
+
+---- Source Options
+Top Module Name                    : keyBoardApp
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "key2Binary.v" in library work
+Compiling verilog file "SevenSegFourDigwithEnable.v" in library work
+Module <key2Binary> compiled
+Module <SevenSegFourDigwithEnable> compiled
+Compiling verilog file "ps2_rx.v" in library work
+Module <SevenSegOneDigwithEnable> compiled
+Compiling verilog file "keyBoardCore.v" in library work
+Module <ps2_rx> compiled
+Compiling verilog file "keyBoardApp.v" in library work
+Module <keyBoardCore> compiled
+Module <keyBoardApp> compiled
+No errors in compilation
+Analysis of file <"keyBoardApp.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <keyBoardApp> in library <work>.
+
+Analyzing hierarchy for module <ps2_rx> in library <work> with parameters.
+	dps = "01"
+	idle = "00"
+	load = "10"
+
+Analyzing hierarchy for module <SevenSegFourDigwithEnable> in library <work> with parameters.
+	SCWIDTH = "00000000000000000000000000001111"
+
+Analyzing hierarchy for module <keyBoardCore> in library <work>.
+
+Analyzing hierarchy for module <SevenSegOneDigwithEnable> in library <work>.
+
+Analyzing hierarchy for module <key2Binary> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <keyBoardApp>.
+Module <keyBoardApp> is correct for synthesis.
+ 
+Analyzing module <ps2_rx> in library <work>.
+	dps = 2'b01
+	idle = 2'b00
+	load = 2'b10
+Module <ps2_rx> is correct for synthesis.
+ 
+Analyzing module <SevenSegFourDigwithEnable> in library <work>.
+	SCWIDTH = 32'sb00000000000000000000000000001111
+Module <SevenSegFourDigwithEnable> is correct for synthesis.
+ 
+Analyzing module <SevenSegOneDigwithEnable> in library <work>.
+Module <SevenSegOneDigwithEnable> is correct for synthesis.
+ 
+Analyzing module <keyBoardCore> in library <work>.
+Module <keyBoardCore> is correct for synthesis.
+ 
+Analyzing module <key2Binary> in library <work>.
+Module <key2Binary> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <ps2_rx>.
+    Related source file is "ps2_rx.v".
+    Found finite state machine <FSM_0> for signal <state_reg>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 11-bit register for signal <b_reg>.
+    Found 1-bit register for signal <f_ps2c_reg>.
+    Found 8-bit register for signal <filter_reg>.
+    Found 4-bit subtractor for signal <n_next$addsub0000> created at line 98.
+    Found 4-bit register for signal <n_reg>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  24 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <ps2_rx> synthesized.
+
+
+Synthesizing Unit <SevenSegOneDigwithEnable>.
+    Related source file is "SevenSegFourDigwithEnable.v".
+Unit <SevenSegOneDigwithEnable> synthesized.
+
+
+Synthesizing Unit <key2Binary>.
+    Related source file is "key2Binary.v".
+Unit <key2Binary> synthesized.
+
+
+Synthesizing Unit <SevenSegFourDigwithEnable>.
+    Related source file is "SevenSegFourDigwithEnable.v".
+    Found 16-bit register for signal <cnt>.
+    Found 16-bit adder for signal <cntNext$addsub0000> created at line 44.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <SevenSegFourDigwithEnable> synthesized.
+
+
+Synthesizing Unit <keyBoardCore>.
+    Related source file is "keyBoardCore.v".
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 2                                              |
+    | Transitions        | 5                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_2> for signal <cnt>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 1                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 20-bit register for signal <sevenOut>.
+    Found 5-bit register for signal <binary_input>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred  25 D-type flip-flop(s).
+Unit <keyBoardCore> synthesized.
+
+
+Synthesizing Unit <keyBoardApp>.
+    Related source file is "keyBoardApp.v".
+Unit <keyBoardApp> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 16-bit adder                                          : 1
+ 4-bit subtractor                                      : 1
+# Registers                                            : 7
+ 1-bit register                                        : 1
+ 11-bit register                                       : 1
+ 16-bit register                                       : 1
+ 20-bit register                                       : 1
+ 4-bit register                                        : 1
+ 5-bit register                                        : 1
+ 8-bit register                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <keyBoardCore/cnt/FSM> on signal <cnt[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 00
+ 001   | 10
+ 010   | 01
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <keyBoardCore/state/FSM> on signal <state[1:1]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 0
+ 001   | 1
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <ps2_rx/state_reg/FSM> on signal <state_reg[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+-------------------
+WARNING:Xst:2677 - Node <b_reg_0> of sequential type is unconnected in block <ps2_rx>.
+WARNING:Xst:2677 - Node <b_reg_0> of sequential type is unconnected in block <ps2_rx>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 3
+# Adders/Subtractors                                   : 2
+ 16-bit adder                                          : 1
+ 4-bit subtractor                                      : 1
+# Registers                                            : 64
+ Flip-Flops                                            : 64
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <keyBoardApp> ...
+
+Optimizing unit <ps2_rx> ...
+
+Optimizing unit <SevenSegFourDigwithEnable> ...
+
+Optimizing unit <keyBoardCore> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block keyBoardApp, actual ratio is 8.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 68
+ Flip-Flops                                            : 68
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : keyBoardApp.ngr
+Top Level Output File Name         : keyBoardApp
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 16
+
+Cell Usage :
+# BELS                             : 159
+#      GND                         : 1
+#      INV                         : 1
+#      LUT1                        : 15
+#      LUT2                        : 4
+#      LUT2_D                      : 2
+#      LUT2_L                      : 3
+#      LUT3                        : 14
+#      LUT3_L                      : 3
+#      LUT4                        : 56
+#      LUT4_D                      : 2
+#      LUT4_L                      : 13
+#      MUXCY                       : 15
+#      MUXF5                       : 13
+#      VCC                         : 1
+#      XORCY                       : 16
+# FlipFlops/Latches                : 68
+#      FDC                         : 25
+#      FDE                         : 5
+#      FDR                         : 17
+#      FDRE                        : 20
+#      FDRS                        : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 15
+#      IBUF                        : 3
+#      OBUF                        : 12
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-4 
+
+ Number of Slices:                       66  out of    960     6%  
+ Number of Slice Flip Flops:             68  out of   1920     3%  
+ Number of 4 input LUTs:                113  out of   1920     5%  
+ Number of IOs:                          16
+ Number of bonded IOBs:                  16  out of     83    19%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 68    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+rst                                | IBUF                   | 25    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 5.218ns (Maximum Frequency: 191.644MHz)
+   Minimum input arrival time before clock: 4.422ns
+   Maximum output required time after clock: 8.408ns
+   Maximum combinational path delay: 9.124ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.218ns (frequency: 191.644MHz)
+  Total number of paths / destination ports: 548 / 93
+-------------------------------------------------------------------------
+Delay:               5.218ns (Levels of Logic = 3)
+  Source:            ps2_rx/filter_reg_5 (FF)
+  Destination:       ps2_rx/state_reg_FSM_FFd1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: ps2_rx/filter_reg_5 to ps2_rx/state_reg_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.591   0.762  ps2_rx/filter_reg_5 (ps2_rx/filter_reg_5)
+     LUT4:I0->O            1   0.704   0.424  ps2_rx/fall_edge31 (ps2_rx/fall_edge31)
+     LUT4_D:I3->O         15   0.704   1.021  ps2_rx/fall_edge33 (ps2_rx/fall_edge)
+     LUT4:I3->O            1   0.704   0.000  ps2_rx/n_next<3> (ps2_rx/n_next<3>)
+     FDC:D                     0.308          ps2_rx/n_reg_3
+    ----------------------------------------
+    Total                      5.218ns (3.011ns logic, 2.207ns route)
+                                       (57.7% logic, 42.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 45 / 45
+-------------------------------------------------------------------------
+Offset:              4.422ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       keyBoardCore/binary_input_4 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to keyBoardCore/binary_input_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            78   1.218   1.312  rst_IBUF (rst_IBUF)
+     LUT3:I2->O            5   0.704   0.633  keyBoardCore/binary_input_not00011 (keyBoardCore/binary_input_not0001)
+     FDE:CE                    0.555          keyBoardCore/binary_input_0
+    ----------------------------------------
+    Total                      4.422ns (2.477ns logic, 1.945ns route)
+                                       (56.0% logic, 44.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 253 / 11
+-------------------------------------------------------------------------
+Offset:              8.408ns (Levels of Logic = 5)
+  Source:            SevenSegFourDigwithEnable/cnt_14 (FF)
+  Destination:       sevenSeg<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: SevenSegFourDigwithEnable/cnt_14 to sevenSeg<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             15   0.591   1.192  SevenSegFourDigwithEnable/cnt_14 (SevenSegFourDigwithEnable/cnt_14)
+     LUT4:I0->O            1   0.704   0.000  SevenSegFourDigwithEnable/inOneDig<1>_F (N107)
+     MUXF5:I0->O           7   0.321   0.883  SevenSegFourDigwithEnable/inOneDig<1> (SevenSegFourDigwithEnable/inOneDig<1>)
+     LUT4:I0->O            1   0.704   0.000  SevenSegFourDigwithEnable/inst0/sevenSeg<2>1 (SevenSegFourDigwithEnable/inst0/sevenSeg<2>)
+     MUXF5:I0->O           1   0.321   0.420  SevenSegFourDigwithEnable/inst0/sevenSeg<2>_f5 (sevenSeg_2_OBUF)
+     OBUF:I->O                 3.272          sevenSeg_2_OBUF (sevenSeg<2>)
+    ----------------------------------------
+    Total                      8.408ns (5.913ns logic, 2.495ns route)
+                                       (70.3% logic, 29.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 74 / 11
+-------------------------------------------------------------------------
+Delay:               9.124ns (Levels of Logic = 6)
+  Source:            rst (PAD)
+  Destination:       sevenSeg<7> (PAD)
+
+  Data Path: rst to sevenSeg<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            78   1.218   1.281  rst_IBUF (rst_IBUF)
+     LUT4:I3->O            1   0.704   0.000  SevenSegFourDigwithEnable/inOneDig<1>_F (N107)
+     MUXF5:I0->O           7   0.321   0.883  SevenSegFourDigwithEnable/inOneDig<1> (SevenSegFourDigwithEnable/inOneDig<1>)
+     LUT4:I0->O            1   0.704   0.000  SevenSegFourDigwithEnable/inst0/sevenSeg<2>1 (SevenSegFourDigwithEnable/inst0/sevenSeg<2>)
+     MUXF5:I0->O           1   0.321   0.420  SevenSegFourDigwithEnable/inst0/sevenSeg<2>_f5 (sevenSeg_2_OBUF)
+     OBUF:I->O                 3.272          sevenSeg_2_OBUF (sevenSeg<2>)
+    ----------------------------------------
+    Total                      9.124ns (6.540ns logic, 2.584ns route)
+                                       (71.7% logic, 28.3% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.35 secs
+ 
+--> 
+
+
+Total memory usage is 520356 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

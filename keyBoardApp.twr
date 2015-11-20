@@ -1,0 +1,107 @@
+--------------------------------------------------------------------------------
+Release 14.1 Trace  (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+/home/vkdijd000u/Programs/Xilinx_14.1/14.1/ISE_DS/ISE/bin/lin64/unwrapped/trce
+-intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml keyBoardApp.twx keyBoardApp.ncd -o
+keyBoardApp.twr keyBoardApp.pcf -ucf keyBoardApp.ucf
+
+Design file:              keyBoardApp.ncd
+Physical constraint file: keyBoardApp.pcf
+Device,package,speed:     xc3s100e,cp132,-4 (PRODUCTION 1.27 2012-04-23)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk
+------------+------------+------------+------------------+--------+
+            |Max Setup to|Max Hold to |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+ps2c        |    0.399(R)|    0.864(R)|clk_BUFGP         |   0.000|
+ps2d        |    1.294(R)|    0.147(R)|clk_BUFGP         |   0.000|
+rst         |    4.192(R)|    0.007(R)|clk_BUFGP         |   0.000|
+------------+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+anode<0>    |    8.996(R)|clk_BUFGP         |   0.000|
+anode<1>    |    8.941(R)|clk_BUFGP         |   0.000|
+anode<2>    |    9.685(R)|clk_BUFGP         |   0.000|
+anode<3>    |    8.969(R)|clk_BUFGP         |   0.000|
+sevenSeg<1> |   14.036(R)|clk_BUFGP         |   0.000|
+sevenSeg<2> |   13.752(R)|clk_BUFGP         |   0.000|
+sevenSeg<3> |   12.984(R)|clk_BUFGP         |   0.000|
+sevenSeg<4> |   13.057(R)|clk_BUFGP         |   0.000|
+sevenSeg<5> |   13.005(R)|clk_BUFGP         |   0.000|
+sevenSeg<6> |   11.749(R)|clk_BUFGP         |   0.000|
+sevenSeg<7> |   13.768(R)|clk_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.624|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+rst            |anode<0>       |    9.161|
+rst            |anode<1>       |    9.146|
+rst            |anode<2>       |    8.422|
+rst            |anode<3>       |    7.641|
+rst            |sevenSeg<1>    |   12.111|
+rst            |sevenSeg<2>    |   11.827|
+rst            |sevenSeg<3>    |   11.098|
+rst            |sevenSeg<4>    |   11.132|
+rst            |sevenSeg<5>    |   11.119|
+rst            |sevenSeg<6>    |   10.716|
+rst            |sevenSeg<7>    |   11.843|
+---------------+---------------+---------+
+
+
+Analysis completed Fri Nov 20 18:41:08 2015 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 334 MB
+
+
+
